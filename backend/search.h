@@ -1,0 +1,76 @@
+/* 
+ * Search class
+ * @author: Gustavo Schwantz Oliveira
+ */
+
+#ifndef SEARCH
+#define SEARCH
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <memory>
+#include "moves.h"
+#include "node.h"
+#include "eightpuzzle.h"
+#include "fringe.h"
+#include "myqueue.h"
+#include "priorityqueue.h"
+#include "functions.h"
+
+#define LIMIT_DLS 30
+#define N_RESTART 5000
+
+using n_ptr = std::shared_ptr<Node>;
+
+class Search {
+public:
+	Search ()
+	{
+
+	}
+
+	~Search ()
+	{
+
+	}
+
+	int get_tested_states () const
+	{
+		return tested_states;
+	}
+    
+	std::vector<Moves> breadth_first_search (const EightPuzzle& p)
+    {
+	    return graph_search (p, std::make_shared<MyQueue<n_ptr>> ());
+    }
+
+    std::vector<Moves> depth_limited_search (const EightPuzzle& p)
+    {
+    	tested_states = 0;
+    	return recursive_dls (std::make_shared<Node> (p.initial_state ()), p, LIMIT_DLS);
+    }
+
+    std::vector<Moves> a_star (const EightPuzzle& p)
+    {
+	    return graph_search (p, std::make_shared<PriorityQueue<n_ptr>> (Functions (p.initial_state ())));
+    }
+
+    std::vector<Moves> random_restart_hill_climbing (const EightPuzzle& p);
+
+private:
+	std::vector<Moves> graph_search (const EightPuzzle& p, const std::shared_ptr< Fringe<n_ptr> >& f);
+	std::vector<Moves> recursive_dls (const n_ptr& n, const EightPuzzle& p, const int& l);
+	n_ptr random_hill_climbing (const EightPuzzle& p, std::vector<Moves>& a, const n_ptr& n);
+	std::vector<n_ptr> expand (const n_ptr& n, const EightPuzzle& p);
+	bool is_not_in_closed (const std::string& s);
+    std::vector<Moves> solution (const n_ptr& n);
+    n_ptr select_neighbor_randomly (const n_ptr& n, const EightPuzzle& p);
+    int distance (const n_ptr& n, const EightPuzzle& p);
+
+	std::vector<std::string> closed_list;
+	int tested_states;
+};
+
+#endif
