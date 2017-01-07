@@ -1,3 +1,6 @@
+#ifndef CAMINHO
+#define CAMINHO
+
 #include <gtkmm/box.h>
 #include <gtkmm/label.h>
 #include <gtkmm/entry.h>
@@ -12,3 +15,5 @@ private:
 	Gtk::ScrolledWindow caminho;
 	Gtk::Entry entry;
 };
+
+#endif

@@ -17,6 +17,8 @@ RadioButtonBox::RadioButtonBox ()
     busca_profundidade.signal_clicked ().connect (sigc::mem_fun (*this, &RadioButtonBox::on_button_selected));
     a_estrela.signal_clicked ().connect (sigc::mem_fun (*this, &RadioButtonBox::on_button_selected));
     hill_clibing.signal_clicked ().connect (sigc::mem_fun (*this, &RadioButtonBox::on_button_selected));
+
+    busca_largura.set_active ();
     
     pack_start (busca_largura);
     pack_start (busca_profundidade);

@@ -1,3 +1,6 @@
+#ifndef RADIO_BUTTON_BOX
+#define RADIO_BUTTON_BOX
+
 #include <gtkmm/box.h>
 #include <gtkmm/radiobutton.h>
 #include "enum.h"
@@ -16,3 +19,5 @@ private:
 	    a_estrela, hill_clibing;
     Algoritmo algoritmo;
 };
+
+#endif

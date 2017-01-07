@@ -1,7 +1,6 @@
 #include "entradas.h"
 
 Entradas::Entradas ()
-    //:buscar ("Iniciar Busca")
 {
 	set_border_width (10);
 
@@ -68,7 +67,6 @@ Entradas::Entradas ()
 	grid1.attach (meta[8], 2, 2, 1, 1);
 
 	pack_start (grid1, Gtk::PACK_EXPAND_PADDING);
-	//pack_start (buscar, Gtk::PACK_EXPAND_PADDING);
 }
 
 Entradas::~Entradas ()
@@ -76,36 +74,33 @@ Entradas::~Entradas ()
 
 }
 
-std::array<int, 9> Entradas::get_inicial ()
+std::string Entradas::get_inicial ()
 {
-	std::array<int, 9> i;
+	std::string estado;
 
-	i[0] = std::stoi (inicial[0].get_text ());
-	i[1] = std::stoi (inicial[1].get_text ());
-	i[2] = std::stoi (inicial[2].get_text ());
-	i[3] = std::stoi (inicial[3].get_text ());
-	i[4] = std::stoi (inicial[4].get_text ());
-	i[5] = std::stoi (inicial[5].get_text ());
-	i[6] = std::stoi (inicial[6].get_text ());
-	i[7] = std::stoi (inicial[7].get_text ());
-	i[8] = std::stoi (inicial[8].get_text ());
+	for (int i = 0; i != 9; ++i)
+		estado += inicial[i].get_text (); 
 
-	return i;
+	return (verifica_entrada (estado)) ? estado : throw EntradaInvalida{"Entrada Inválida!"};
 }
 
-std::array<int, 9> Entradas::get_meta ()
+std::string Entradas::get_meta ()
 {
-	std::array<int, 9> m;
+	std::string estado;
 
-	m[0] = std::stoi (meta[0].get_text ());
-	m[1] = std::stoi (meta[1].get_text ());
-	m[2] = std::stoi (meta[2].get_text ());
-	m[3] = std::stoi (meta[3].get_text ());
-	m[4] = std::stoi (meta[4].get_text ());
-	m[5] = std::stoi (meta[5].get_text ());
-	m[6] = std::stoi (meta[6].get_text ());
-	m[7] = std::stoi (meta[7].get_text ());
-	m[8] = std::stoi (meta[8].get_text ());
+	for (int i = 0; i != 9; ++i)
+		estado += meta[i].get_text (); 
+	
+	return (verifica_entrada (estado)) ? estado : throw EntradaInvalida{"Entrada Inválida!"};
+}
 
-	return m;
+bool Entradas::verifica_entrada (const std::string& e)
+{
+	std::string modelo ("012345678");
+
+	for (const auto& c : modelo)
+		if (e.find (c) == std::string::npos)
+			return false;
+
+    return true;		
 }
