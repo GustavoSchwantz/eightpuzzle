@@ -16,7 +16,7 @@ Informacoes::~Informacoes ()
 
 } 
 
-void Informacoes::set_output (const int& v)
+void Informacoes::set_output (const unsigned int& v)
 {
 	valor.set_text (std::to_string (v));
 }

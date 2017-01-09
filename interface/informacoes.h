@@ -11,7 +11,7 @@ public:
 	Informacoes (const std::string& f);
 	~Informacoes ();
 
-	void set_output (const int& v);
+	void set_output (const unsigned int& v);
 
 private:
 	Gtk::Label frase;

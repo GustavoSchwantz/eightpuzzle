@@ -29,7 +29,7 @@ JogoDoOito::JogoDoOito ()
 	main_box.pack_start (info1);
 	main_box.pack_start (caminho);
 
-    iniciar.signal_clicked ().connect (sigc::mem_fun (*this, &JogoDoOito::on_buttom_clicked));
+    iniciar.signal_clicked ().connect (sigc::mem_fun (*this, &JogoDoOito::iniciar_pressionado));
 
     info0.set_output (0);
     info1.set_output (0);
@@ -37,31 +37,54 @@ JogoDoOito::JogoDoOito ()
  	show_all_children ();
 }   
 
-JogoDoOito::~JogoDoOito ()
+void JogoDoOito::iniciar_pressionado ()
 {
-	
-}
-
-void JogoDoOito::on_buttom_clicked ()
-{
-	if (radiobuttons.get_algoritmo () == Algoritmo::hill) 
-		std::cout << "\nAlgoritmo: Hill Climbing" << std::endl;
-	else if (radiobuttons.get_algoritmo () == Algoritmo::profundidade) 
-		std::cout << "\nAlgoritmo: Busca em Pofundidade" << std::endl;
-	else if (radiobuttons.get_algoritmo () == Algoritmo::estrela) 
-		std::cout << "\nAlgoritmo: A*" << std::endl;
-	else
-		std::cout << "\nAlgoritmo: Busca em Largura" << std::endl;
+	Search search;
+	std::vector<Moves> path;
 
 	try {
-	
-	std::cout << "Estado Inicial " << entradas.get_inicial () << std::endl;
-	std::cout << "Estado Meta " << entradas.get_meta () << std::endl;
 
-    } catch (EntradaInvalida e) {
-        std::cout << e.what () << std::endl;
+	    if (radiobuttons.get_algoritmo () == Algoritmo::hill) {
+	        path = search.random_restart_hill_climbing (EightPuzzle (entradas.get_inicial (), entradas.get_meta ()));	
+	        info0.set_output (search.get_closed_list_size ());
+            info1.set_output (path.size ());
+            caminho.set_path (formata_caminho (path));
+	    }
+	    else if (radiobuttons.get_algoritmo () == Algoritmo::profundidade); 
+		
+	    else if (radiobuttons.get_algoritmo () == Algoritmo::estrela); 
+		
+	    else {
+	    	path = search.breadth_first_search (EightPuzzle (entradas.get_inicial (), entradas.get_meta ()));	
+	        info0.set_output (search.get_closed_list_size ());
+            info1.set_output (path.size ());
+            caminho.set_path (formata_caminho (path));
+	    }
+
+    } catch (EntradaInvalida) {
+    	caminho.set_path ("Entrada incorreta! Por favor, digite uma configuração válida.");
     }
+}
 
-    info0.set_output (42);
-    info1.set_output (42);
+std::string JogoDoOito::formata_caminho (const std::vector<Moves>& c)
+{
+	if (!c.size ())
+		return "O estado meta não é alcançável à partir desse estado inicial.";
+
+	std::string cam_for;
+
+	for (const auto& m : c) {
+		if (m == Moves::no_action)
+			cam_for += "->NO ACTION";
+		if (m == Moves::left)
+			cam_for += "->LEFT";
+		if (m == Moves::right)
+			cam_for += "->RIGHT";
+		if (m == Moves::up)
+			cam_for += "->UP";
+		if (m == Moves::down)
+			cam_for += "->DOWN";
+	}
+
+	return cam_for;
 }

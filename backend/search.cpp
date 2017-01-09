@@ -2,12 +2,12 @@
 
 std::vector<Moves> Search::graph_search (const EightPuzzle& p, const std::shared_ptr< Fringe<n_ptr> >& f)
 {
-	closed_list.erase (closed_list.begin (), closed_list.begin ()); tested_states = 0;
+	closed_list.erase (closed_list.begin (), closed_list.end ());
 	f->insert_ (std::make_shared<Node> (p.initial_state ())); 
 
 	for ( ; ; ) {
-		if (f->empty ()) { return {}; }
-		auto node = f->remove_first (); ++tested_states;
+		if (f->empty_ ()) { return {}; }
+		auto node = f->remove_first ();
 		if (p.goal_test (node->get_state ())) { return solution (node); }
 		if (is_not_in_closed (node->get_state ())) {
 			closed_list.push_back (node->get_state ());
@@ -18,7 +18,6 @@ std::vector<Moves> Search::graph_search (const EightPuzzle& p, const std::shared
 
 std::vector<Moves> Search::recursive_dls (const n_ptr& n, const EightPuzzle& p, const int& l)
 {
-	++tested_states;
 	if (p.goal_test (n->get_state ())) { return solution (n); }
 	else if (n->get_depth () == l) { return {}; }
 	else {
@@ -33,13 +32,16 @@ std::vector<Moves> Search::recursive_dls (const n_ptr& n, const EightPuzzle& p, 
 
 std::vector<Moves> Search::random_restart_hill_climbing (const EightPuzzle& p)
 {
-	std::vector<Moves> path;
+	closed_list.erase (closed_list.begin (), closed_list.end ());
 	n_ptr initial_node{std::make_shared<Node> (p.initial_state ())};
+
+	std::vector<Moves> path;
 
 	for (int i = 0; i != N_RESTART; ++i) {
 		auto node = random_hill_climbing (p, path, initial_node);
-		if (p.goal_test (node->get_state ()))
+		if (p.goal_test (node->get_state ())) {
 			return (path.size ()) ? path : (path.push_back (Moves::no_action), path);
+		}
 
 		initial_node = select_neighbor_randomly (node, p);
 		path.push_back (initial_node->get_action ());
@@ -97,7 +99,7 @@ std::vector<Moves> Search::solution (const n_ptr& n)
 {
 	std::vector<Moves> path;
 
-	std::cout << "\nEstado encontrado: " << n->get_state () << std::endl;
+	std::cout << "Estado Final: " << n->get_state () << std::endl;
 
 	if (!n->get_father ()) {
 		path.push_back (n->get_action ());
@@ -115,6 +117,9 @@ std::vector<Moves> Search::solution (const n_ptr& n)
 
 n_ptr Search::select_neighbor_randomly (const n_ptr& n, const EightPuzzle& p)
 {
+	if (is_not_in_closed (n->get_state ())) 
+		closed_list.push_back (n->get_state ());
+
 	std::vector<n_ptr> sucessors;
 
     for (auto d : p.sucessor_fun (n->get_state ())) {

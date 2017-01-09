@@ -19,3 +19,8 @@ Caminho::~Caminho ()
 {
 
 }
+
+void Caminho::set_path (const std::string& s)
+{
+	entry.set_text (s);
+}

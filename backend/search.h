@@ -16,11 +16,12 @@
 #include "eightpuzzle.h"
 #include "fringe.h"
 #include "myqueue.h"
+#include "mystack.h"
 #include "priorityqueue.h"
 #include "functions.h"
 
 #define LIMIT_DLS 30
-#define N_RESTART 5000
+#define N_RESTART 10000
 
 using n_ptr = std::shared_ptr<Node>;
 
@@ -36,19 +37,23 @@ public:
 
 	}
 
-	int get_tested_states () const
+	unsigned int get_closed_list_size () const
 	{
-		return tested_states;
+		return closed_list.size ();
 	}
-    
+
 	std::vector<Moves> breadth_first_search (const EightPuzzle& p)
     {
 	    return graph_search (p, std::make_shared<MyQueue<n_ptr>> ());
     }
 
+    std::vector<Moves> depth_first_search (const EightPuzzle& p)
+    {
+	    return graph_search (p, std::make_shared<MyStack<n_ptr>> ());
+    }
+
     std::vector<Moves> depth_limited_search (const EightPuzzle& p)
     {
-    	tested_states = 0;
     	return recursive_dls (std::make_shared<Node> (p.initial_state ()), p, LIMIT_DLS);
     }
 
@@ -70,7 +75,6 @@ private:
     int distance (const n_ptr& n, const EightPuzzle& p);
 
 	std::vector<std::string> closed_list;
-	int tested_states;
 };
 
 #endif

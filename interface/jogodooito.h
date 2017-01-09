@@ -6,27 +6,33 @@
 #include <gtkmm/frame.h>
 #include <vector>
 #include <utility>
+#include <string>
 #include "radiobuttonbox.h"
 #include "entradas.h"
 #include "informacoes.h"
 #include "caminho.h"
+#include "../backend/search.h"
+#include "../backend/eightpuzzle.h"
+#include "../backend/moves.h"
 
 
 class JogoDoOito : public Gtk::Window {
 public:
 	JogoDoOito ();
-	~JogoDoOito ();
+	~JogoDoOito ()
+    {
+
+    }
 
 private:
-	void on_buttom_clicked ();
+	void iniciar_pressionado ();
+    std::string formata_caminho (const std::vector<Moves>& c);
 
     Gtk::Box main_box;
     RadioButtonBox radiobuttons;
     Gtk::Frame opcao, estados;
     Entradas entradas;
     Gtk::Button iniciar;
-
-    Algoritmo algoritmo;
     Informacoes info0, info1;
     Caminho caminho;
 };

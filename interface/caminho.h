@@ -10,10 +10,13 @@ class Caminho : public Gtk::Box {
 public:
 	Caminho ();
 	~Caminho ();
+
+	void set_path (const std::string& s);
+
 private:
 	Gtk::Label titulo;
 	Gtk::ScrolledWindow caminho;
-	Gtk::Entry entry;
+    Gtk::Entry entry;
 };
 
 #endif

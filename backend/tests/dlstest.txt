@@ -1,0 +1,22 @@
+
+Depth-Limited Search Test:
+
+Estado Inicial: 123456780
+Estado Final: 123456780
+Número de estados p/ a solução: 1
+Número de estados testados: 0
+Time: 0 milliseconds
+
+Estado Inicial: 243106758
+Estado Final: 123456780
+Número de estados p/ a solução: 30
+Número de estados testados: 0
+Time: 0 milliseconds
+
+Estado Inicial: 158023467
+Estado Final: 123456780
+Número de estados p/ a solução: 29
+Número de estados testados: 0
+Time: 2055417 milliseconds
+
+Estado Inicial: 207854361

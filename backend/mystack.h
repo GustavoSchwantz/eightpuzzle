@@ -6,9 +6,9 @@
 template<typename T>
 class MyStack : public Fringe<T> {
 public:
-	bool empty ()
+	bool empty_ ()
 	{
-		return (this->size ()) ? false : true;
+		return this->empty ();
 	}
 
 	T first ()

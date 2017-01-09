@@ -1,0 +1,78 @@
+Hill Climbing Test:
+
+Estado Inicial: 123456780
+Estado Final: 123456780
+Número de estados p/ a solução: 1
+Número de estados testados: 1
+Time: 0 milliseconds
+
+Estado Inicial: 243106758
+Estado Final: 123456780
+Número de estados p/ a solução: 288
+Número de estados testados: 194
+Time: 3 milliseconds
+
+Estado Inicial: 158023467
+Estado Final: 123456780
+Número de estados p/ a solução: 3073
+Número de estados testados: 1967
+Time: 37 milliseconds
+
+Estado Inicial: 207854361
+Estado Final: 123456780
+Número de estados p/ a solução: 1793
+Número de estados testados: 1172
+Time: 22 milliseconds
+
+Estado Inicial: 876543210
+Estado Final: 123456780
+Número de estados p/ a solução: 4600
+Número de estados testados: 2967
+Time: 56 milliseconds
+
+Estado Inicial: 684507312
+Estado Final: 123456780
+Número de estados p/ a solução: 2016
+Número de estados testados: 1304
+Time: 24 milliseconds
+
+Estado Inicial: 087654321
+Estado Final: 123456780
+Número de estados p/ a solução: 5968
+Número de estados testados: 3843
+Time: 73 milliseconds
+
+Estado Inicial: 807564231
+Estado Final: 123456780
+Número de estados p/ a solução: 815
+Número de estados testados: 517
+Time: 9 milliseconds
+
+Estado Inicial: 708654231
+Estado Final: 123456780
+Número de estados p/ a solução: 4507
+Número de estados testados: 2867
+Time: 54 milliseconds
+
+Estado Inicial: 708564132
+Estado Final: 123456780
+Número de estados p/ a solução: 539
+Número de estados testados: 332
+Time: 6 milliseconds
+
+Estado Inicial: 708546123
+Estado Final: 123456780
+Número de estados p/ a solução: 2999
+Número de estados testados: 1955
+Time: 36 milliseconds
+
+Estado Inicial: 123457680
+Número de estados p/ a solução: 0
+Número de estados testados: 10000
+Time: 188 milliseconds
+
+Estado Inicial: 518023467
+Número de estados p/ a solução: 0
+Número de estados testados: 10000
+Time: 189 milliseconds
+
