@@ -1,0 +1,77 @@
+
+Iterative Deepening Search Test:
+
+Estado Inicial: 123456780
+Estado Final: 123456780
+Número de estados p/ a solução: 1
+Número de estados testados: 0
+Time: 0 milliseconds
+
+Estado Inicial: 243106758
+Estado Final: 123456780
+Número de estados p/ a solução: 6
+Número de estados testados: 9
+Time: 0 milliseconds
+
+Estado Inicial: 158023467
+Estado Final: 123456780
+Número de estados p/ a solução: 21
+Número de estados testados: 8252
+Time: 10892 milliseconds
+
+Estado Inicial: 207854361
+Número de estados p/ a solução: 0
+Número de estados testados: 78951
+Time: 1107319 milliseconds
+
+Estado Inicial: 876543210
+Estado Final: 123456780
+Número de estados p/ a solução: 30
+Número de estados testados: 450
+Time: 175360 milliseconds
+
+Estado Inicial: 684507312
+Número de estados p/ a solução: 0
+Número de estados testados: 39269
+Time: 983574 milliseconds
+
+Estado Inicial: 087654321
+Estado Final: 123456780
+Número de estados p/ a solução: 32
+Número de estados testados: 50083
+Time: 508618 milliseconds
+
+Estado Inicial: 807654213
+Estado Final: 123456780
+Número de estados p/ a solução: 29
+Número de estados testados: 39894
+Time: 440558 milliseconds
+
+Estado Inicial: 708654312
+Estado Final: 123456780
+Número de estados p/ a solução: 27
+Número de estados testados: 12264
+Time: 76377 milliseconds
+
+Estado Inicial: 708564132
+Estado Final: 123456780
+Número de estados p/ a solução: 27
+Número de estados testados: 13732
+Time: 66459 milliseconds
+
+Estado Inicial: 708546123
+Estado Final: 123456780
+Número de estados p/ a solução: 33
+Número de estados testados: 1880
+Time: 586807 milliseconds
+
+Estado Inicial: 123457680
+Número de estados p/ a solução: 0
+Número de estados testados: 32477
+Time: 601236 milliseconds
+
+Estado Inicial: 518023467
+Número de estados p/ a solução: 0
+Número de estados testados: 57257
+Time: 739721 milliseconds
+

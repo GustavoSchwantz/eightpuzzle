@@ -11,6 +11,7 @@
 #include <string>
 #include <algorithm>
 #include <memory>
+#include <limits>
 #include "moves.h"
 #include "node.h"
 #include "eightpuzzle.h"
@@ -20,7 +21,6 @@
 #include "priorityqueue.h"
 #include "functions.h"
 
-#define LIMIT_DLS 30
 #define N_RESTART 10000
 
 using n_ptr = std::shared_ptr<Node>;
@@ -47,16 +47,10 @@ public:
 	    return graph_search (p, std::make_shared<MyQueue<n_ptr>> ());
     }
 
-    std::vector<Moves> depth_first_search (const EightPuzzle& p)
-    {
-	    return graph_search (p, std::make_shared<MyStack<n_ptr>> ());
-    }
+    std::vector<Moves> iterative_deepening_search (const EightPuzzle& p);
 
-    std::vector<Moves> depth_limited_search (const EightPuzzle& p)
-    {
-    	return recursive_dls (std::make_shared<Node> (p.initial_state ()), p, LIMIT_DLS);
-    }
-
+    std::vector<Moves> depth_limited_search (const EightPuzzle& p, const int& d);
+    
     std::vector<Moves> a_star (const EightPuzzle& p)
     {
 	    return graph_search (p, std::make_shared<PriorityQueue<n_ptr>> (Functions (p.initial_state ())));

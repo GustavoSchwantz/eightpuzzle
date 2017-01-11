@@ -40,7 +40,7 @@ JogoDoOito::JogoDoOito ()
 void JogoDoOito::iniciar_pressionado ()
 {
 	Search search;
-	std::vector<Moves> path;
+    std::vector<Moves> path;
 
 	try {
 
@@ -50,13 +50,21 @@ void JogoDoOito::iniciar_pressionado ()
             info1.set_output (path.size ());
             caminho.set_path (formata_caminho (path));
 	    }
-	    else if (radiobuttons.get_algoritmo () == Algoritmo::profundidade); 
-		
-	    else if (radiobuttons.get_algoritmo () == Algoritmo::estrela); 
-		
+	    else if (radiobuttons.get_algoritmo () == Algoritmo::profundidade) {
+            path = search.iterative_deepening_search (EightPuzzle (entradas.get_inicial (), entradas.get_meta ()));	
+	        info0.set_output (search.get_closed_list_size () + 1);
+            info1.set_output (path.size ());
+            caminho.set_path (formata_caminho (path));
+	    }
+	    else if (radiobuttons.get_algoritmo () == Algoritmo::estrela) {
+            path = search.a_star (EightPuzzle (entradas.get_inicial (), entradas.get_meta ()));	
+	        info0.set_output (search.get_closed_list_size () + 1);
+            info1.set_output (path.size ());
+            caminho.set_path (formata_caminho (path));
+	    }
 	    else {
 	    	path = search.breadth_first_search (EightPuzzle (entradas.get_inicial (), entradas.get_meta ()));	
-	        info0.set_output (search.get_closed_list_size ());
+	        info0.set_output (search.get_closed_list_size () + 1);
             info1.set_output (path.size ());
             caminho.set_path (formata_caminho (path));
 	    }

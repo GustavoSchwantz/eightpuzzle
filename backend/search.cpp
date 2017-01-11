@@ -7,25 +7,53 @@ std::vector<Moves> Search::graph_search (const EightPuzzle& p, const std::shared
 
 	for ( ; ; ) {
 		if (f->empty_ ()) { return {}; }
+
 		auto node = f->remove_first ();
+
 		if (p.goal_test (node->get_state ())) { return solution (node); }
+
 		if (is_not_in_closed (node->get_state ())) {
+
 			closed_list.push_back (node->get_state ());
 			f->insert_all (expand (node, p));
 		}
 	}
 }
 
+std::vector<Moves> Search::iterative_deepening_search (const EightPuzzle& p)
+{
+    for (int depth = 0; depth != std::numeric_limits<int>::max (); ++depth) {
+        std::vector<Moves> path = depth_limited_search (p, depth);
+        if (path.size ()) { return path; }
+    }
+
+    return {};
+}
+
+std::vector<Moves> Search::depth_limited_search (const EightPuzzle& p, const int& d)
+{
+	closed_list.erase (closed_list.begin (), closed_list.end ());
+    return recursive_dls (std::make_shared<Node> (p.initial_state ()), p, d);
+}
+
+
 std::vector<Moves> Search::recursive_dls (const n_ptr& n, const EightPuzzle& p, const int& l)
 {
 	if (p.goal_test (n->get_state ())) { return solution (n); }
+
 	else if (n->get_depth () == l) { return {}; }
-	else {
-		for (const auto& succ : expand (n, p)) {
-			std::vector<Moves> path = recursive_dls (succ, p, l);
-			if (path.size ()) { return path; }
+
+	else 
+		if (is_not_in_closed (n->get_state ())) {
+
+			closed_list.push_back (n->get_state ());
+
+			for (const auto& succ : expand (n, p)) {
+
+		        std::vector<Moves> path = recursive_dls (succ, p, l);
+		        if (path.size ()) { return path; }
+	        }
 		}
-	}
 
 	return {};
 }
@@ -98,8 +126,6 @@ bool Search::is_not_in_closed (const std::string& s)
 std::vector<Moves> Search::solution (const n_ptr& n)
 {
 	std::vector<Moves> path;
-
-	std::cout << "Estado Final: " << n->get_state () << std::endl;
 
 	if (!n->get_father ()) {
 		path.push_back (n->get_action ());

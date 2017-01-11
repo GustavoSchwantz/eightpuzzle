@@ -3,40 +3,76 @@ Breadth-First Search Test:
 Estado Inicial: 123456780
 Estado Final: 123456780
 Número de estados p/ a solução: 1
-Número de estados testados: 1
+Número de estados testados: 0
 Time: 0 milliseconds
 
 Estado Inicial: 243106758
 Estado Final: 123456780
 Número de estados p/ a solução: 6
-Número de estados testados: 193
-Time: 3 milliseconds
+Número de estados testados: 124
+Time: 2 milliseconds
 
 Estado Inicial: 158023467
 Estado Final: 123456780
 Número de estados p/ a solução: 19
-Número de estados testados: 63028
-Time: 81481 milliseconds
+Número de estados testados: 34005
+Time: 49541 milliseconds
 
 Estado Inicial: 207854361
 Estado Final: 123456780
 Número de estados p/ a solução: 27
-Número de estados testados: 438140
-Time: 2545750 milliseconds
+Número de estados testados: 173632
+Time: 2156960 milliseconds
 
 Estado Inicial: 876543210
 Estado Final: 123456780
 Número de estados p/ a solução: 30
-Número de estados testados: 481589
-Time: 2972187 milliseconds
+Número de estados testados: 181295
+Time: 2543122 milliseconds
+
+Estado Inicial: 684507312
+Estado Final: 123456780
+Número de estados p/ a solução: 28
+Número de estados testados: 179990
+Time: 2427172 milliseconds
+
+Estado Inicial: 087654321
+Estado Final: 123456780
+Número de estados p/ a solução: 28
+Número de estados testados: 178034
+Time: 2321817 milliseconds
+
+Estado Inicial: 807654213
+Estado Final: 123456780
+Número de estados p/ a solução: 27
+Número de estados testados: 177684
+Time: 2276488 milliseconds
+
+Estado Inicial: 708654312
+Estado Final: 123456780
+Número de estados p/ a solução: 27
+Número de estados testados: 177860
+Time: 2284788 milliseconds
+
+Estado Inicial: 708564132
+Estado Final: 123456780
+Número de estados p/ a solução: 25
+Número de estados testados: 158871
+Time: 1582649 milliseconds
+
+Estado Inicial: 708546123
+Estado Final: 123456780
+Número de estados p/ a solução: 27
+Número de estados testados: 177889
+Time: 2288503 milliseconds
 
 Estado Inicial: 123457680
 Número de estados p/ a solução: 0
-Número de estados testados: 483841
-Time: 2994929 milliseconds
+Número de estados testados: 181440
+Time: 2571142 milliseconds
 
 Estado Inicial: 518023467
 Número de estados p/ a solução: 0
-Número de estados testados: 483841
-Time: 2995298 milliseconds
+Número de estados testados: 181440
+Time: 2572569 milliseconds
 

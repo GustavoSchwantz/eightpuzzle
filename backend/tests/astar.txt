@@ -1,0 +1,22 @@
+
+A* Test:
+
+Estado Inicial: 123456780
+Estado Final: 123456780
+Número de estados p/ a solução: 1
+Número de estados testados: 0
+Time: 0 milliseconds
+
+Estado Inicial: 243106758
+Estado Final: 123456780
+Número de estados p/ a solução: 6
+Número de estados testados: 74
+Time: 2 milliseconds
+
+Estado Inicial: 158023467
+Estado Final: 123456780
+Número de estados p/ a solução: 19
+Número de estados testados: 26031
+Time: 152176 milliseconds
+
+Estado Inicial: 207854361

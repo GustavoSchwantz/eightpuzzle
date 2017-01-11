@@ -1,0 +1,16 @@
+
+Iterative Deepening Search Test:
+
+Estado Inicial: 207854361
+Estado Final: 123456780
+Número de estados p/ a solução: 39
+Número de estados testados: 61600
+Time: 2920838 milliseconds
+
+Estado Inicial: 684507312
+Estado Final: 123456780
+Número de estados p/ a solução: 34
+Número de estados testados: 20807
+Time: 1057193 milliseconds
+
+Estado Inicial: 123457680
